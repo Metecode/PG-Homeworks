@@ -1,29 +1,33 @@
-﻿/*********************************************************************************
+﻿/******************************************************************************************
 **                                SAKARYA UNIVERSITY
-**                    Faculty of Computer and Information Sciences                       
+**                    FACULTY OF COMPUTER AND INFORMATION SCIENCES
+**                               COMPUTER ENGINEERING
+**                           INTRODUCTION TO PROGRAMMING
 **
-**
-**
-**
-**
-**
-**
-*/
+**                          HOMEWORK NUMBER : 1
+**                          STUDENT'S NAMES : İSMAİL METE UÇAR
+**                          STUDENT'S NUMBERS : G201210051
+**                          LESSON GROUP : 2C
+*******************************************************************************************/
 
-
-#include <iostream>
+//Added necessary library.
+#include <iostream> 
 #include <string>
 #include <cstdlib>
 #include <ctime>
 
 using namespace std;
 
-bool searchString(string A[], string answer)
+//Created a function for check the words that created randomly if they are city or not.
+bool searchString(string A[], string answer) 
 {
     int j;
     int isSame = 0;
-    for (j = 0; j < 80; j++) {
-        if (A[j].compare(answer) == 0) {
+    //A loop for check each city.
+    for (j = 0; j < 80; j++)
+    {
+        if (A[j].compare(answer) == 0)
+        {
             isSame = 1;
         }
     }
@@ -32,20 +36,24 @@ bool searchString(string A[], string answer)
 
 int main()
 {
+    //Created an array for all the cities.
     string provinces[81] =
-    { "adana","adiyaman","afyon","agri","amasya","ankara","antalya","artvin","aydin","balikesir",
+    { "adana","adiyaman","afyonkarahisar","agri","amasya","ankara","antalya","artvin","aydin","balikesir",
     "bilecik","bingol","bitlis","bolu","burdur","bursa","canakkale","cankiri","corum","denizli","diyarbakir",
     "edirne","elazig","erzincan","erzurum","eskisehir","gaziantep","giresun","gumushane","hakkari","hatay",
     "isparta","mersin","istanbul","izmir","kars","kastamonu","kayseri","kirklareli","kirsehir","kocaeli",
-    "konya","kutahya","malatya","manisa","kahramanmaras","mardin","mugla","mus","nevsehir","nigde","ordu","rize"
+    "konya","kutahya","malatya","manisa","kahramanmaras","mardin","mugla","mus","nevsehir","nigde","ordu","rize",
     "sakarya","samsun","siirt","sinop","sivas","tekirdag","tokat","trabzon","tunceli","sanliurfa","usak","van",
     "yozgat","zonguldak","aksaray","bayburt","karaman","kirikkale","batman","sirnak","bartin","ardahan","igdir",
     "yalova","karabuk","kilis","osmaniye","duzce"
     };
 
+    //Created variables for shortest and longest city names.
     int greatestLength = provinces[0].length();
     int smallestLength = provinces[0].length();
-    for (int i = 0; provinces[i] != "\0"; i++)
+
+    //A loop for check the cities if they are the shortest or the longest city names.
+    for (int i = 0; i < 81; i++)
     {
         if (provinces[i].length() > greatestLength)
         {
@@ -56,321 +64,90 @@ int main()
             smallestLength = provinces[i].length();
         }
     }
-    cout << "Karakter uzunlugu en fazla:" << greatestLength << "tur." << endl;
-    cout << "Karakter uzunlugu en kucuk:" << smallestLength << "tur." << endl;
-    cout << "Karakter uzunlugu en kucuk sehirler:" << endl;
-    for (int i = 0; provinces[i] != "\0"; i++) {
+
+    cout << "The longest character length is:" << greatestLength << endl;
+    cout << "The shortest character length is:" << smallestLength  << endl;
+    cout << "Character length smallest cities:" << endl;
+
+    //A loop for print the shortest city name to the console.
+    for (int i = 0; i < 81; i++) {
         if (provinces[i].length() == smallestLength)
         {
             cout << provinces[i] << endl;
         }
     }
-    cout << "Karakter uzunlugu en buyuk sehirler:" << endl;
-    for (int i = 0; provinces[i] != "\0"; i++) {
+
+    cout << "Character length biggest cities:" << endl;
+
+    //A loop for print the longest city name to the console.
+    for (int i = 0; i < 81; i++) {
         if (provinces[i].length() == greatestLength)
         {
             cout << provinces[i] << endl;
             cout << endl;
         }
     }
-    bool isFound = 0;
+
     srand(time(NULL));
-    string randomP[3];
-    for (int i = 0; !isFound && i < 100000; i++)
+
+    bool isFound = false;   //Created a bool for if the random word is a city or not.
+    string randomP[14];     //Created an array for random words.
+
+    //A loop for use the program for length of each cities.
+    for (int characterNumber = smallestLength; characterNumber <= greatestLength; characterNumber++)
     {
-        for (int i = 0; i < 3; i++)
-        {
-            randomP[i] = provinces[rand() % 81];
-        }
-        string province = "";
-        int smallestProvince = provinces[0].length();
-        for (int k = 0; k < 3; k++)
-        {
-            
-            if (smallestProvince > randomP[k].length())
-            {
-                smallestProvince = randomP[k].length();
-            }
-           
-        }
-        for (int j = 0; j < smallestProvince; j++)
-        {
-            province = "";
-            for (int i = 0; i < 3; i++)
-            {
-                province += randomP[i][j];
-            }
-            if (searchString(provinces, province) == 1)
-            {
-                cout << "Rastgele 3 harfli sehir bulundu: " << province << endl;
-                cout << "Bu sehirlerin" << j + 1 << "." << "indislerinden olusturulmustur." << endl;
-                for (int i = 0; i < 3; i++)
-                {
-                    cout << randomP[i] << endl;
-                }
-                isFound = 1;
-            }
-        }
-    }
-    if (!isFound)
-    {
-        cout << "Rastgele 3 harfli sehir bulunamadi!\a" << endl;
-    }
-        bool isFound4 = 0;
-        string random4[4];
-        for (int i = 0; !isFound4 && i < 100000; i++)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                random4[i] = provinces[rand() % 81];
-            }
+        isFound = false;
 
-            string province4 = "";
-            for (int j = 0; j < 4; j++)
-            {
-                province4 += random4[j][0];
-            }
-
-            if (searchString(provinces, province4) == 1)
-            {
-                cout << "Rastgele 4 harfli sehir bulundu: " << province4 << endl;
-                isFound4 = 1;
-            }
-        }
-        if (!isFound4)
+        //A loop for try all the possibilities for 100000 times. If loop found a city name, loop will be broken.
+        for (int i = 0; !isFound && i < 100000; i++)
         {
-            cout << "Rastgele 4 harfli sehir bulunamadi!\a" << endl;
-        }
-        bool isFound5 = 0;
-        string random5[5];
-        for (int i = 0; !isFound5 && i < 100000; i++)
-        {
-            for (int i = 0; i < 5; i++)
+            //A loop for pick random province.
+            for (int i = 0; i < characterNumber; i++)
             {
-                random5[i] = provinces[rand() % 81];
+                randomP[i] = provinces[rand() % 81];
             }
-            string province5 = "";
-            for (int j = 0; j < 5; j++)
-            {
-                province5 += random5[j][0];
-            }
-
-            if (searchString(provinces, province5) == 1)
-            {
-                cout << "Rastgele 5 harfli sehir bulundu: " << province5 << endl;
-                isFound5 = 1;
-            }
-        }
-        if (!isFound5)
-        {
-            cout << "Rastgele 5 harfli sehir bulunamadi!\a" << endl;
-        }
-
-        bool isFound6 = 0;
-        string random6[6];
-        for (int i = 0; !isFound6 && i < 100000; i++)
-        {
-            for (int i = 0; i < 6; i++)
-            {
-                random6[i] = provinces[rand() % 81];
-            }
-            string province6 = "";
-            for (int j = 0; j < 6; j++)
-            {
-                province6 += random6[j][0];
-            }
-
-            if (searchString(provinces, province6) == 1)
-            {
-                cout << "Rastgele 6 harfli sehir bulundu: " << province6 << endl;
-                isFound6 = 1;
-            }
-        }
-        if (!isFound6)
-        {
-            cout << "Rastgele 6 harfli sehir bulunamadi!\a" << endl;
-        }
-        bool isFound7 = 0;
-        string random7[7];
-        for (int i = 0; !isFound7 && i < 100000; i++)
-        {
-            for (int i = 0; i < 7; i++)
-            {
-                random7[i] = provinces[rand() % 81];
-            }
-            string province7 = "";
+            //Created a string for keep random words.
+            string province = "";
             int smallestProvince = provinces[0].length();
-            for (int k = 0; k < 7; k++)
+            //A loop for find the shortest random province (So that we can look indexes of all cities) . // sehirlerin butun indislerine bakabilmemiz icin  So that we can look cities of all index
+            for (int k = 0; k < characterNumber; k++)
             {
 
-                if (smallestProvince > random7[k].length())
+                if (smallestProvince > randomP[k].length())
                 {
-                    smallestProvince = random7[k].length();
+                    smallestProvince = randomP[k].length();
                 }
 
             }
             for (int j = 0; j < smallestProvince; j++)
             {
-                province7 = "";
-                for (int i = 0; i < 7; i++)
+                province = "";
+                //A loop for created city from index of random cities
+                for (int i = 0; i < characterNumber; i++)
                 {
-                    province7 += random7[i][j];
+                    province += randomP[i][j];
                 }
-                if (searchString(provinces, province7) == 1)
+
+                if (searchString(provinces, province) == 1)
                 {
-                    cout << "Rastgele 3 harfli sehir bulundu: " << province7 << endl;
+                    cout << "A random city with " << characterNumber << " letters has been found. " << "The cities is found : " << province << endl;
+                    //A loop for print the cities that we used it to pick indexes.
+                    for (int i = 0; i < characterNumber; i++)
+                    {
+                        cout << randomP[i] << endl;
+                    }
+                    cout << "the random city is created from " << j + 1 << "th" << " index of random " << characterNumber << " cities." << endl;
+                    cout << endl;
                     isFound = 1;
                 }
             }
         }
-        if (!isFound7)
+        if (!isFound)
         {
-            cout << "Rastgele 7 harfli sehir bulunamadi!\a" << endl;
+            cout << "Couldn't found random city with " << characterNumber << " letters!\a" << endl;
         }
-        bool isFound8 = 0;
-        string random8[8];
-        for (int i = 0; !isFound8 && i < 100000; i++)
-        {
-            for (int i = 0; i < 8; i++)
-            {
-                random8[i] = provinces[rand() % 81];
-            }
-            string province8 = "";
-            for (int j = 0; j < 8; j++)
-            {
-                province8 += random8[j][0];
-            }
-            if (searchString(provinces, province8) == 1)
-            {
-                cout << "Rastgele 8 harfli sehir bulundu: " << province8 << endl;
-                isFound8 = 1;
-            }
-        }
-        if (!isFound8)
-        {
-            cout << "Rastgele 8 harfli sehir bulunamadi!\a" << endl;
-        }
-        bool isFound9 = 0;
-        string random9[9];
-        for (int i = 0; !isFound9 && i < 100000; i++)
-        {
-            for (int i = 0; i < 9; i++)
-            {
-                random9[i] = provinces[rand() % 81];
-            }
-            string province9 = "";
-            for (int j = 0; j < 9; j++)
-            {
-                province9 += random9[j][0];
-            }
-
-            if (searchString(provinces, province9) == 1)
-            {
-                cout << "Rastgele 9 harfli sehir bulundu: " << province9 << endl;
-                isFound9 = 1;
-            }
-        }
-        if (!isFound9)
-        {
-            cout << "Rastgele 9 harfli sehir bulunamadi!\a" << endl;
-        }
-        bool isFound10 = 0;
-        string random10[10];
-        for (int i = 0; !isFound10 && i < 100000; i++)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                random10[i] = provinces[rand() % 81];
-            }
-            string province10 = "";
-            for (int j = 0; j < 10; j++)
-            {
-                province10 += random10[j][0];
-            }
-            if (searchString(provinces, province10) == 1)
-            {
-                cout << "Rastgele 10 harfli sehir bulundu: " << province10 << endl;
-                isFound10 = 1;
-            }
-        }
-        if (!isFound10)
-        {
-            cout << "Rastgele 10 harfli sehir bulunamadi!\a" << endl;
-        }
-        bool isFound11 = 0;
-        string random11[11];
-        for (int i = 0; !isFound11 && i < 100000; i++)
-        {
-            for (int i = 0; i < 11; i++)
-            {
-                random11[i] = provinces[rand() % 81];
-            }
-            string province11 = "";
-            for (int j = 0; j < 11; j++)
-            {
-                province11 += random11[j][0];
-            }
-
-            if (searchString(provinces, province11) == 1)
-            {
-                cout << "Rastgele 11 harfli sehir bulundu: " << province11 << endl;
-                isFound11 = 1;
-            }
-        }
-        if (!isFound11)
-        {
-            cout << "Rastgele 11 harfli sehir bulunamadi!\a" << endl;
-        }
-        bool isFound12 = 0;
-        string random12[12];
-        for (int i = 0; !isFound12 && i < 100000; i++)
-        {
-            for (int i = 0; i < 12; i++)
-            {
-                random12[i] = provinces[rand() % 81];
-            }
-            string province12 = "";
-            for (int j = 0; j < 12; j++)
-            {
-                province12 += random12[j][0];
-            }
-
-            if (searchString(provinces, province12) == 1)
-            {
-                cout << "Rastgele 12 harfli sehir bulundu: " << province12 << endl;
-                isFound12 = 1;
-            }
-        }
-        if (!isFound12)
-        {
-            cout << "Rastgele 12 harfli sehir bulunamadi!\a" << endl;
-        }
-        bool isFound13 = 0;
-        string random13[13];
-        for (int i = 0; !isFound13 && i < 100000; i++)
-        {
-            for (int i = 0; i < 13; i++)
-            {
-                random13[i] = provinces[rand() % 81];
-            }
-            string province13 = "";
-            for (int j = 0; j < 13; j++)
-            {
-                province13 += random13[j][0];
-            }
-
-            if (searchString(provinces, province13) == 1)
-            {
-                cout << "Rastgele 13 harfli sehir bulundu: " << province13 << endl;
-                isFound13 = 1;
-            }
-        }
-        if (!isFound13)
-        {
-            cout << "Rastgele 13 harfli sehir bulunamadi!\a" << endl;
-        }
-        system("pause");
-        return 0;
-        
     }
 
+    system("pause");
+    return 0;
+}
