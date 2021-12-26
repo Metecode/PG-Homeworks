@@ -1,0 +1,11 @@
+﻿  PgHomework2.cpp
+C:\Users\Mete\source\repos\PgHomework2\PgHomework2\PgHomework2.cpp(153,18): warning C4309: 'initializing': truncation of constant value
+C:\Users\Mete\source\repos\PgHomework2\PgHomework2\PgHomework2.cpp(154,27): warning C4309: 'initializing': truncation of constant value
+C:\Users\Mete\source\repos\PgHomework2\PgHomework2\PgHomework2.cpp(155,28): warning C4309: 'initializing': truncation of constant value
+C:\Users\Mete\source\repos\PgHomework2\PgHomework2\PgHomework2.cpp(156,18): warning C4309: 'initializing': truncation of constant value
+C:\Users\Mete\source\repos\PgHomework2\PgHomework2\PgHomework2.cpp(157,21): warning C4309: 'initializing': truncation of constant value
+C:\Users\Mete\source\repos\PgHomework2\PgHomework2\PgHomework2.cpp(158,29): warning C4309: 'initializing': truncation of constant value
+C:\Users\Mete\source\repos\PgHomework2\PgHomework2\PgHomework2.cpp(159,31): warning C4309: 'initializing': truncation of constant value
+C:\Users\Mete\source\repos\PgHomework2\PgHomework2\PgHomework2.cpp(160,19): warning C4309: 'initializing': truncation of constant value
+C:\Users\Mete\source\repos\PgHomework2\PgHomework2\PgHomework2.cpp(166,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  PgHomework2.vcxproj -> C:\Users\Mete\source\repos\PgHomework2\Debug\PgHomework2.exe
